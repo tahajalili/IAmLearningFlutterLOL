@@ -1,6 +1,6 @@
-# basic_todo
+# My Flutter Dev Journey
 
-My First Flutter App. Just like everyone, its a dumb ToDo List App.
+This repo is a collection of apps I create to learn and practice my Dart and Flutter knowledge.
 
 A few resources to get you started if you're beginner just like me:
 
