@@ -1,7 +1,17 @@
+
+
 import 'package:flutter/material.dart';
+
 
 void main() {
   runApp(MyApp());
+}
+
+class Task {
+  final String title;
+  final String description;
+
+  Task(this.title, this.description);
 }
 
 class MyApp extends StatelessWidget {
@@ -25,8 +35,7 @@ class MyTaskList extends StatefulWidget {
 }
 
 class _MyTaskListState extends State<MyTaskList> {
-  final _taskItems = <String>[];
-
+  final _taskItems = <Task>[];
   final myController = TextEditingController();
 
 
@@ -38,18 +47,18 @@ class _MyTaskListState extends State<MyTaskList> {
 
   void _addTask(String task){
     setState(() {
-      _taskItems.add(task);
+      _taskItems.add(Task(task,"Description for task: ${task}"));
     });
     myController.clear();
   }
-
 
   Widget _buildTaskList() {
     return new ListView.separated(
         itemCount: _taskItems.length,
         itemBuilder: (BuildContext context, index) {
           print(_taskItems);
-          return _buildTask(_taskItems[index],index);
+          var title = _taskItems[index].title;
+          return _buildTask(title,index);
         },
 
         separatorBuilder: (BuildContext context, int index) => const Divider(height: 3,color: Colors.black38,)
@@ -97,6 +106,7 @@ class _MyTaskListState extends State<MyTaskList> {
               actions: <Widget>[
                 TextButton(
                     onPressed: () {
+                      // _addTask(myController.text);
                       _addTask(myController.text);
                       Navigator.pop(context, "ok");
 
@@ -114,5 +124,19 @@ class _MyTaskListState extends State<MyTaskList> {
         ),
         body: _buildTaskList(),
     );
+  }
+}
+
+
+//new page to show task detail
+class DetailScreen extends StatelessWidget{
+  // final Task task;
+
+  // DetailScreen({Key?key, })
+
+  @override
+  Widget build(BuildContext context) {
+
+
   }
 }
